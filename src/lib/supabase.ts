@@ -23,9 +23,11 @@ export const supabase = createClient(
 );
 
 // Handle auth redirect
-if (window.location.hash && window.location.hash.includes('access_token')) {
-  const { data: { session }, error } = await supabase.auth.getSession();
-  if (!error && session) {
-    window.location.replace(window.location.origin + window.location.pathname);
+export const handleAuthRedirect = async () => {
+  if (window.location.hash && window.location.hash.includes('access_token')) {
+    const { data: { session }, error } = await supabase.auth.getSession();
+    if (!error && session) {
+      window.location.replace(window.location.origin + window.location.pathname);
+    }
   }
-}
+};

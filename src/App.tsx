@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { useAuth } from './context/AuthContext';
+import { handleAuthRedirect } from './lib/supabase';
 import SplashScreen from './components/SplashScreen';
 import HomeScreen from './components/HomeScreen';
 import CharacterSelection from './components/CharacterSelection';
@@ -30,6 +31,10 @@ const AnimatedRoutes = () => {
 };
 
 const App: React.FC = () => {
+  useEffect(() => {
+    handleAuthRedirect();
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
