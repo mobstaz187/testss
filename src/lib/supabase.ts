@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import { Database } from '../types/supabase';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -23,3 +22,11 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     }
   }
 });
+
+// Handle auth redirect
+if (window.location.hash && window.location.hash.includes('access_token')) {
+  const { data: { session }, error } = await supabase.auth.getSession();
+  if (!error && session) {
+    window.location.replace(window.location.origin + window.location.pathname);
+  }
+}

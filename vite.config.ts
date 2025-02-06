@@ -5,7 +5,7 @@ import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/testss/', // Updated to match your repository name
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

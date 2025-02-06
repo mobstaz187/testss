@@ -16,7 +16,6 @@ export function DiscordProvider({ children }: { children: ReactNode }) {
     const savedUser = localStorage.getItem('discord_user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const unlockCharacter = async (characterName: string) => {
     if (!user) return;
@@ -33,7 +32,6 @@ export function DiscordProvider({ children }: { children: ReactNode }) {
   const value = {
     user,
     setUser,
-    isLoading,
     unlockCharacter
   };
 

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const UserProfile: React.FC = () => {
-  const { user, logout } = useAuth();
+  const { user, signOut } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
 
   if (!user) return null;
 
   const handleLogout = () => {
-    logout();
+    signOut();
     setShowDropdown(false);
   };
 
@@ -20,7 +20,7 @@ const UserProfile: React.FC = () => {
           hover:bg-black/50 transition-colors duration-300"
       >
         <img
-          src={user.avatar}
+          src={user.avatar_url}
           alt="Profile"
           className="w-8 h-8 rounded-full"
         />
