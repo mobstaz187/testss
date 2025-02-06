@@ -1,4 +1,3 @@
-import { ImportMetaEnv } from '../vite-env';
 import { createClient } from '@supabase/supabase-js';
 
 if (!import.meta.env.VITE_SUPABASE_URL) {

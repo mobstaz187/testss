@@ -1,5 +1,3 @@
-import { ImportMetaEnv } from '../vite-env';
-
 const DISCORD_API = 'https://discord.com/api';
 
 export async function getDiscordUser(code: string) {
