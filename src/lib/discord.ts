@@ -1,4 +1,4 @@
-import { ImportMetaEnv } from '../vite-env.d.ts';
+import { ImportMetaEnv } from '../vite-env.ts';
 
 const DISCORD_API = 'https://discord.com/api';
 

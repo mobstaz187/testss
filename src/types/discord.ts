@@ -1,4 +1,4 @@
-import { ImportMetaEnv } from '../vite-env.d.ts';
+import { ImportMetaEnv } from '../vite-env.ts';
 
 export interface DiscordUser {
   id: string;
