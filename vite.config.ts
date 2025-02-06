@@ -33,5 +33,19 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  envPrefix: 'VITE_'
+  envPrefix: 'VITE_',
+  server: {
+    headers: {
+      'Content-Security-Policy': [
+        "default-src 'self'",
+        "style-src 'self' 'unsafe-inline' https://db.onlinewebfonts.com",
+        "font-src 'self' https://db.onlinewebfonts.com",
+        "img-src 'self' data: https: http:",
+        "media-src 'self' https: http:",
+        "connect-src 'self' https://tbkutkyeiweflkzwwrap.supabase.co https://discord.com",
+        "frame-src 'self' https://discord.com",
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      ].join('; ')
+    }
+  }
 })
