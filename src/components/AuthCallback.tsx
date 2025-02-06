@@ -1,24 +1,18 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { getDiscordUser } from '../lib/discord';
 import { useAuth } from '../context/AuthContext';
 
 const AuthCallback: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { login } = useAuth();
+  const { signInWithDiscord } = useAuth();
 
   useEffect(() => {
     const code = searchParams.get('code');
     
     if (code) {
-      getDiscordUser(code)
-        .then(user => {
-          login({
-            id: user.id,
-            username: user.username,
-            avatar: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-          });
+      signInWithDiscord()
+        .then(() => {
           navigate('/');
         })
         .catch(error => {
@@ -28,7 +22,7 @@ const AuthCallback: React.FC = () => {
     } else {
       navigate('/');
     }
-  }, [searchParams, navigate, login]);
+  }, [searchParams, navigate, signInWithDiscord]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

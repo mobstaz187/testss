@@ -1,5 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
-import type { Database } from '../types/supabase';
+
+declare global {
+  interface ImportMetaEnv {
+    VITE_SUPABASE_URL: string;
+    VITE_SUPABASE_ANON_KEY: string;
+  }
+}
 
 if (!import.meta.env.VITE_SUPABASE_URL) {
   throw new Error('Missing VITE_SUPABASE_URL environment variable');
