@@ -55,23 +55,24 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
+      const { data: profile, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
 
       if (error) throw error;
-      setUser(data);
+      if (profile) {
+        setUser(profile);
+      }
     } catch (error) {
       console.error('Error fetching profile:', error);
-      return null;
     }
   };
 
   const signInWithDiscord = async () => {
     try {
-      const { data, error } = await supabase.auth.signInWithOAuth({
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'discord',
         options: {
           redirectTo: window.location.origin,
