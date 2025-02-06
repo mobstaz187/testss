@@ -1,11 +1,6 @@
-import { createClient } from '@supabase/supabase-js';
+/// <reference types="../vite-env.d.ts" />
 
-declare global {
-  interface ImportMetaEnv {
-    VITE_SUPABASE_URL: string;
-    VITE_SUPABASE_ANON_KEY: string;
-  }
-}
+import { createClient } from '@supabase/supabase-js';
 
 if (!import.meta.env.VITE_SUPABASE_URL) {
   throw new Error('Missing VITE_SUPABASE_URL environment variable');

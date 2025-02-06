@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
-import { DiscordUser, DiscordContextType } from '../types/discord';
+import type { DiscordUser, DiscordContextType } from '../types/discord';
 
 const DiscordContext = createContext<DiscordContextType | undefined>(undefined);
 

@@ -1,3 +1,5 @@
+/// <reference types="../vite-env.d.ts" />
+
 const DISCORD_API = 'https://discord.com/api';
 
 export async function getDiscordUser(code: string) {
