@@ -10,6 +10,5 @@ export interface DiscordUser {
 export interface DiscordContext {
   user: DiscordUser | null;
   setUser: (user: DiscordUser | null) => void;
-  isLoading: boolean;
   unlockCharacter: (characterName: string) => Promise<void>;
 }

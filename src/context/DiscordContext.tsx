@@ -29,7 +29,7 @@ export function DiscordProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('discord_user', JSON.stringify(updatedUser));
   };
 
-  const value = {
+  const value: DiscordContextType = {
     user,
     setUser,
     unlockCharacter
