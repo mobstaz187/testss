@@ -11,10 +11,18 @@ if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
 // Create a custom storage implementation that uses memory instead of localStorage
 const memoryStorage = {
   storage: new Map<string, string>(),
-  getItem: (key: string) => memoryStorage.storage.get(key) || null,
-  setItem: (key: string, value: string) => memoryStorage.storage.set(key, value),
-  removeItem: (key: string) => memoryStorage.storage.delete(key),
-  clear: () => memoryStorage.storage.clear(),
+  getItem: (key: string): string | null => {
+    return memoryStorage.storage.get(key) || null;
+  },
+  setItem: (key: string, value: string): void => {
+    memoryStorage.storage.set(key, value);
+  },
+  removeItem: (key: string): void => {
+    memoryStorage.storage.delete(key);
+  },
+  clear: (): void => {
+    memoryStorage.storage.clear();
+  },
   length: 0,
   key: () => null,
 };
